@@ -12,8 +12,17 @@ function starttimer()//start timer fuction executed when timer is started
 
 function pausetimer()//pause timer fuction executed when timer is paused
 {
-    clearInterval(timer);//stoping timer
-    running=false;
+    let button = document.getElementById("pauseResumeBtn");
+
+    if (running) {
+        clearInterval(timer);
+        running = false;
+        paused = true;
+        button.innerText = "Resume";  // Change button text to Resume
+    } else if (paused) {
+        starttimer();  // Resume stopwatch
+        button.innerText = "Pause";  // Change button text back to Pause
+    }
 }
 
 function stoptimer()
